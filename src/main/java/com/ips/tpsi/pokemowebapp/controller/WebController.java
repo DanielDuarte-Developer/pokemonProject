@@ -10,14 +10,14 @@ public class WebController {
     public ModelAndView getHome(){
         ModelAndView mv = new ModelAndView("index");
         // Aceder à business component > acede ao repositorio > obtem dados
-
         return mv;
     }
     @GetMapping("/name")
     public ModelAndView getName(){
-        ModelAndView mv = new ModelAndView("index");
+        ModelAndView mv = new ModelAndView("nome");
         // Aceder à business component > acede ao repositorio > obtem dados
         mv.addObject("name","Daniel");
         return mv;
     }
+
 }
