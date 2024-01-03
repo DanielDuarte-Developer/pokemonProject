@@ -48,7 +48,7 @@ public class Pokemon {
     private Integer speed;
 
     @Column(name = "legendary")
-    private boolean isLegendary;
+    private String isLegendary;
 
 
 }
