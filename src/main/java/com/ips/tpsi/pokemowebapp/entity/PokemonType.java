@@ -16,15 +16,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PokemonType {
+
     @Id
     @Column(name = "id_pokemonType")
     private Integer idPokemonType;
 
-    @Column(name = "pokemon_Id")
-    private Integer PokemonId;
+    @Column(name = "Pokemon_Id")
+    private Integer pokemonId;
 
     @Column(name = "typeP_id")
-    private Integer type_Id;
+    private Integer typeId;
 
     @Column(name = "typelvl")
     private Integer typeLVL;

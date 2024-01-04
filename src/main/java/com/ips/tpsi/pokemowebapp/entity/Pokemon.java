@@ -20,11 +20,11 @@ public class Pokemon {
     @Column(name = "id_pokemon")
     private Integer idPokemon;
 
-    @Column(name = "typeP_id")
-    private Integer typeId;
+    @Column(name="pokemon_name")
+    private String pokemonName;
 
-    @Column(name = "generation_id")
-    private Integer generationId;
+    @Column(name = "generation")
+    private Integer generation;
 
     @Column(name = "total")
     private Integer total;
@@ -48,7 +48,6 @@ public class Pokemon {
     private Integer speed;
 
     @Column(name = "legendary")
-    private String isLegendary;
-
+    private String legendary;
 
 }
