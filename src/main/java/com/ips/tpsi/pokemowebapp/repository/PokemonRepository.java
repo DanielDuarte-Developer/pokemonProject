@@ -22,6 +22,23 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
     List<Pokemon> findBySpeed(int speed);
     List<Pokemon> findByLegendary(String legendary);
 
+    @Query("SELECT p, e1.element as type1, e2.element as type2 " +
+            "FROM Pokemon p " +
+            "INNER JOIN PokemonType pe1 ON p.idPokemon = pe1.pokemonId AND pe1.typeLVL = 1 " +
+            "INNER JOIN Type e1 ON pe1.typeId = e1.idType " +
+            "LEFT JOIN PokemonType pe2 ON p.idPokemon = pe2.pokemonId AND pe2.typeLVL = 2 " +
+            "LEFT JOIN Type e2 ON pe2.typeId = e2.idType")
+    List<Object> findDetailedPokemons();
+
+
+    @Query("SELECT p, e1.element as type1, e2.element as type2 " +
+            "FROM Pokemon p " +
+            "INNER JOIN PokemonType pe1 ON p.idPokemon = pe1.pokemonId AND pe1.typeLVL = 1 " +
+            "INNER JOIN Type e1 ON pe1.typeId = e1.idType " +
+            "LEFT JOIN PokemonType pe2 ON p.idPokemon = pe2.pokemonId AND pe2.typeLVL = 2 " +
+            "LEFT JOIN Type e2 ON pe2.typeId = e2.idType " +
+            "WHERE p.idPokemon = :idPokemon")
+    Object findDetailedPokemonById(final Integer idPokemon);
 
     //Possivel 2 opção a ser analisada pela stora
     /*

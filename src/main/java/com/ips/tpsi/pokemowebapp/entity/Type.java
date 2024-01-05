@@ -21,6 +21,6 @@ public class Type {
     private Integer idType;
 
     @Column(name = "typeP")
-    private String Type;
+    private String element;
 
 }
