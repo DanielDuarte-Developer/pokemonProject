@@ -109,14 +109,14 @@
         <tr th:each="pokemon : ${pokemons}">
           <td th:text="${pokemon[0].idPokemon}"></td>
           <td th:text="${pokemon[0].pokemonName}"></td>
-          <td th:text="${pokemon[0].generation}"></td>
+          <td th:text="${pokemon[0].total}"></td>
           <td th:text="${pokemon[0].hp}"></td>
           <td th:text="${pokemon[0].attack}"></td>
           <td th:text="${pokemon[0].defense}"></td>
-          <td th:text="${pokemon[0].total}"></td>
+          <td th:text="${pokemon[0].speed}"></td>
           <td th:text="${pokemon[0].spAttack}"></td>
           <td th:text="${pokemon[0].spDefense}"></td>
-          <td th:text="${pokemon[0].speed}"></td>
+          <td th:text="${pokemon[0].generation}"></td>
           <td th:text="${pokemon[0].legendary}"></td>
           <td th:text="${pokemon[1]}"></td>
           <td th:text="${pokemon[2]}"></td>
