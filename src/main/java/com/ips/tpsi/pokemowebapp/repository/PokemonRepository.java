@@ -22,6 +22,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
     List<Pokemon> findByLegendary(String legendary);
 
 
+
     @Query("SELECT p, e1.element as type1, e2.element as type2 " +
             "FROM Pokemon p " +
             "INNER JOIN PokemonType pe1 ON p.idPokemon = pe1.pokemonId AND pe1.typeLVL = 1 " +

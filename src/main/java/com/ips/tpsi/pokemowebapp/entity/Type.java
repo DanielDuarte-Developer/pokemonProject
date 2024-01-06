@@ -20,7 +20,7 @@ public class Type {
     @Column(name = "id_type")
     private Integer idType;
 
-    @Column(name = "typeP")
+    @Column(name = "element")
     private String element;
 
 }

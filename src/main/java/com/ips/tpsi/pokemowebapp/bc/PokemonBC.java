@@ -16,7 +16,6 @@ public class PokemonBC {
                                                      Integer speedDF, Integer speed, boolean legendary){
         if(pokemonName == null && generation == null && hp == null && attack == null && defense == null && speedAT == null && speedDF== null
         && speed == null && typePokemon == null){
-
             return pokemonRepository.findDetailedPokemons();
         }
         return null;

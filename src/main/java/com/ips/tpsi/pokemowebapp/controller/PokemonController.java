@@ -1,6 +1,8 @@
 package com.ips.tpsi.pokemowebapp.controller;
 
 import com.ips.tpsi.pokemowebapp.bc.PokemonBC;
+import com.ips.tpsi.pokemowebapp.entity.Pokemon;
+import com.ips.tpsi.pokemowebapp.entity.PokemonType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +28,8 @@ public class PokemonController {
     Integer speedDF, Integer speed, boolean legendary){
         List<Object> pokemonDetailed = pokemonBc.getPokemonByFilters(pokemonName,typePokemon,hp,attack,defense,speedAT,generation,speedDF,speed,legendary);
 
-
         ModelAndView mv = new ModelAndView("consultar");
         mv.addObject("pokemons",pokemonDetailed);
-        mv.addObject("num");
         return mv;
     }
 
