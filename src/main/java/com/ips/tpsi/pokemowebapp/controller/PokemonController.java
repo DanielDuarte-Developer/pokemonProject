@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class PokemonController {
     @Autowired
@@ -19,10 +21,15 @@ public class PokemonController {
         ModelAndView mv = new ModelAndView("consultar");
         return mv;
     }
-    @GetMapping("/consultarLogic")
-    public ModelAndView consultar(){
+    @PostMapping("/consultarLogic")
+    public ModelAndView consultar(String pokemonName, String typePokemon, Integer generation, Integer hp, Integer attack, Integer defense, Integer speedAT,
+    Integer speedDF, Integer speed, boolean legendary){
+        List<Object> pokemonDetailed = pokemonBc.getPokemonByFilters(pokemonName,typePokemon,hp,attack,defense,speedAT,generation,speedDF,speed,legendary);
+
+
         ModelAndView mv = new ModelAndView("consultar");
-        //Fazer Logica
+        mv.addObject("pokemons",pokemonDetailed);
+        mv.addObject("num");
         return mv;
     }
 

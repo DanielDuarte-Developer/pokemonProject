@@ -3,6 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Consultar</title>
+    <style>
+      .table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 16px;
+          text-align: left;
+      }
+
+      /* Estilizando as células da tabela */
+      table th, table td {
+          padding: 12px;
+          border-bottom: 1px solid #ddd;
+      }
+
+      /* Estilizando o cabeçalho da tabela */
+      table th {
+          background-color: #f2f2f2;
+          color: #333;
+      }
+
+      /* Estilizando as linhas alternadas da tabela */
+      table tr:nth-child(even) {
+          background-color: #f9f9f9;
+      }
+
+      /* Estilizando a tabela quando hover sobre as linhas */
+      table tr:hover {
+          background-color: #f5f5f5;
+      }
+
+      /* Adicionando sombra à tabela */
+      table {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Estilizando o texto dentro das células */
+      table td {
+          color: #333;
+      }
+
+      /* Adicionando efeito de transição para suavizar as mudanças de cor ao passar o mouse */
+      table tr {
+          transition: background-color 0.3s;
+      }
+    </style>
 </head>
   <body>
     <form th:action="@{/consultarLogic}" method="post">
@@ -43,19 +89,38 @@
     </form>
 
     <div id="pokemonContent">
-      <h1> Pokemon Content</h1>
-      <p th:text="${idPokemon}"  style="display: none;"></p>
-      <h2 th:text="${pokemonName}"></h2>
-      <p th:text="${element1}"></p>
-      <p th:text="${element2}"></p>
-      <p th:text="${generation}"></p>
-      <p th:text="${hp}"></p>
-      <p th:text="${attack}"></p>
-      <p th:text="${defense}"></p>
-      <p th:text="${speedAT}"></p>
-      <p th:text="${speedDF}"></p>
-      <p th:text="${speed}"></p>
-      <p th:text="${legendary}"></p>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Total</th>
+          <th>HP</th>
+          <th>Attack</th>
+          <th>Defense</th>
+          <th>Speed</th>
+          <th>Speed Attack</th>
+          <th>Speed Defense</th>
+          <th>Generation</th>
+          <th>Legendary</th>
+          <th>Type 1</th>
+          <th>Type 2</th>
+        </tr>
+        <tr th:each="pokemon : ${pokemons}">
+          <td th:text="${pokemon[0].idPokemon}"></td>
+          <td th:text="${pokemon[0].pokemonName}"></td>
+          <td th:text="${pokemon[0].generation}"></td>
+          <td th:text="${pokemon[0].hp}"></td>
+          <td th:text="${pokemon[0].attack}"></td>
+          <td th:text="${pokemon[0].defense}"></td>
+          <td th:text="${pokemon[0].total}"></td>
+          <td th:text="${pokemon[0].spAttack}"></td>
+          <td th:text="${pokemon[0].spDefense}"></td>
+          <td th:text="${pokemon[0].speed}"></td>
+          <td th:text="${pokemon[0].legendary}"></td>
+          <td th:text="${pokemon[1]}"></td>
+          <td th:text="${pokemon[2]}"></td>
+        </tr>
+      </table>
 
       <button th:href="@{/alterar}">Alterar</button>
       <button th:href="@{/apagar}">Apagar</button>

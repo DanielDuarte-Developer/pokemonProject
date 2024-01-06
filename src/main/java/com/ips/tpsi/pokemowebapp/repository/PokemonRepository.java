@@ -1,7 +1,6 @@
 package com.ips.tpsi.pokemowebapp.repository;
 
 import com.ips.tpsi.pokemowebapp.entity.Pokemon;
-import com.ips.tpsi.pokemowebapp.entity.PokemonType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -11,7 +10,7 @@ import java.util.List;
 @Repository
 public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
     //Primeira opção a ser considerada
-    List<Pokemon> findAll();
+    //List<Pokemon> findAll();
     List<Pokemon> findByPokemonName(String pokemonName);
     List<Pokemon> findByGeneration(int generation);
     List<Pokemon> findByHp(int hp);
@@ -21,6 +20,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
     List<Pokemon> findBySpDefense(int sp_defense);
     List<Pokemon> findBySpeed(int speed);
     List<Pokemon> findByLegendary(String legendary);
+
 
     @Query("SELECT p, e1.element as type1, e2.element as type2 " +
             "FROM Pokemon p " +
@@ -39,6 +39,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
             "LEFT JOIN Type e2 ON pe2.typeId = e2.idType " +
             "WHERE p.idPokemon = :idPokemon")
     Object findDetailedPokemonById(final Integer idPokemon);
+
 
     //Possivel 2 opção a ser analisada pela stora
     /*
