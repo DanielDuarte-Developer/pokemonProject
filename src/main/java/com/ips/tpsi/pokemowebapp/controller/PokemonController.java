@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,7 +26,9 @@ public class PokemonController {
     }
     @PostMapping("/consultarLogic")
     public ModelAndView consultar(String pokemonName, String typePokemon, Integer generation, Integer hp, Integer attack, Integer defense, Integer speedAT,
-    Integer speedDF, Integer speed, boolean legendary){
+    Integer speedDF, Integer speed, String legendary){
+
+        System.out.println("PokemonName:"+ pokemonName + "TypePokemon "+ typePokemon + "generation "+ generation + "Legendary "+ legendary);
         List<Object> pokemonDetailed = pokemonBc.getPokemonByFilters(pokemonName,typePokemon,hp,attack,defense,speedAT,generation,speedDF,speed,legendary);
 
         ModelAndView mv = new ModelAndView("consultar");
