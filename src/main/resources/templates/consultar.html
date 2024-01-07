@@ -74,7 +74,7 @@
       <input id="speedAT" type="number" name="speedAT" min="10" max="194">
 
       <label for="speedDF">Speed Defense</label>
-      <input id="speedDF" type="number" name="speedDF" min="20" max="230">
+      <input id="speedDF" type="numb<er" name="speedDF" min="20" max="230">
 
       <label for="speed">Speed</label>
       <input id="speed" type="number" name="speed" min="5" max="180">
@@ -86,8 +86,12 @@
         <option value="false">False</option>
       </select>
 
-      <input type="submit" value="Pesquisar">
+      <input type="submit" name="action" value="Pesquisar">
+      <input type="submit" name="action" value="Alterar">
+
     </form>
+
+
 
     <div id="pokemonContent">
       <table>
@@ -105,7 +109,9 @@
           <th>Legendary</th>
           <th>Type 1</th>
           <th>Type 2</th>
+          <th>Select for Delete</th>
         </tr>
+        <form th:action="@{/apagarLogic}" method="post">
         <tr th:each="pokemon : ${pokemons}">
           <td th:text="${pokemon[0].idPokemon}"></td>
           <td th:text="${pokemon[0].pokemonName}"></td>
@@ -120,11 +126,14 @@
           <td th:text="${pokemon[0].legendary}"></td>
           <td th:text="${pokemon[1]}"></td>
           <td th:text="${pokemon[2]}"></td>
+          <td><input type="checkbox" name="selectedPokemons" th:value="${pokemon[0].idPokemon}"></td>
         </tr>
+          <input type="submit" name="action" value="Apagar">
+        </form>
       </table>
 
-      <button th:href="@{/alterar}">Alterar</button>
-      <button th:href="@{/apagar}">Apagar</button>
+      <!--<h2 th:text="${deleteConfirm}"></h2>-->
+
     </div>
 
   </body>

@@ -7,11 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
     //Primeira opção a ser considerada
     //List<Pokemon> findAll();
+    Optional<Pokemon> findByIdPokemon(Integer idPokemon);
     List<Pokemon> findByPokemonName(String pokemonName);
     List<Pokemon> findByGeneration(int generation);
     List<Pokemon> findByHp(int hp);
@@ -62,5 +64,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
             @Param("legendary") String legendary,
             @Param("typePokemon") String typePokemon
     );
+
+
 
 }
