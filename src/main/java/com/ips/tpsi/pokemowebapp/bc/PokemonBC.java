@@ -28,9 +28,21 @@ public class PokemonBC {
         }
     }
 
-    public void alterarPokemon(Integer idPokemon, String pokemonName, Integer generation, Integer hp, Integer attack, Integer defense,
-                               Integer speedAttack, Integer speedDefense, Integer speed, boolean legendary){
-
+    public boolean updatePokemonById(Integer idPokemon, String pokemonName, String typePokemon1, String typePokemon2, Integer generation,
+                                     Integer total ,Integer hp, Integer attack, Integer defense, Integer speedAT,
+                                     Integer speedDF, Integer speed, String legendary){
+        if(pokemonRepository.existsById(idPokemon)){
+            System.out.println("PokemonId: "+ idPokemon + " Nome: "+ pokemonName+ " typePokemon1: " + typePokemon1 +" typePokemon2 " + typePokemon2 +" generation " + generation
+                    +" hp " + hp +" attack " + attack +" defense " + defense + " speedAttack " + speedAT + " speedDefense " + speedDF +" speed " +speed  +" Legendary " + legendary);
+            pokemonRepository.updatePokemonWithFilters(idPokemon,pokemonName,generation,total,hp,attack,defense,speedAT,speedDF,speed,legendary);
+            if(!typePokemon1.isBlank() || !typePokemon2.isBlank()){
+                pokemonRepository.updatePokemonType1(idPokemon,typePokemon1);
+                pokemonRepository.updatePokemonType2(idPokemon,typePokemon2);
+            }
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public boolean deletePokemonById(Integer idPokemon){
@@ -46,4 +58,6 @@ public class PokemonBC {
     public Optional<Pokemon> findPokemonById(Integer idPokemon){
         return pokemonRepository.findByIdPokemon(idPokemon);
     }
+
+
 }

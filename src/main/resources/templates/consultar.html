@@ -87,8 +87,6 @@
       </select>
 
       <input type="submit" name="action" value="Pesquisar">
-      <input type="submit" name="action" value="Alterar">
-
     </form>
 
 
@@ -129,10 +127,11 @@
           <td><input type="checkbox" name="selectedPokemons" th:value="${pokemon[0].idPokemon}"></td>
         </tr>
           <input type="submit" name="action" value="Apagar">
+          <input type="submit" name="action" value="Alterar">
         </form>
       </table>
 
-      <!--<h2 th:text="${deleteConfirm}"></h2>-->
+      <h3 th:text="${deleteConfirm}"></h3>
 
     </div>
 

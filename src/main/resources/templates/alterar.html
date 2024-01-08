@@ -6,14 +6,23 @@
 </head>
   <body>
   <form th:action="@{/alterarLogic}" method="post">
+
+    <input type="hidden" name="alterarPokemonId" th:value="${pokemonId}">
+
     <label for="pokemonName">Pokemon Name</label>
     <input id="pokemonName" type="text" name="pokemonName">
 
-    <label for="typePokemon">Type Pokemon</label>
-    <input id="typePokemon" type="text" name="typePokemon">
+    <label for="typePokemon1">Type1</label>
+    <input id="typePokemon1" type="text" name="typePokemon1">
+
+    <label for="typePokemon2">Type2</label>
+    <input id="typePokemon2" type="text" name="typePokemon2">
 
     <label for="generation">Generation</label>
     <input id="generation" type="number" name="generation" min="1" max="6">
+
+    <label for="total">Total</label>
+    <input id="total" type="number" name="total" min="180" max="780">
 
     <label for="hp">HP</label>
     <input id="hp" type="number" name="hp" min="1" max="255">
@@ -24,11 +33,11 @@
     <label for="defense">Defense</label>
     <input id="defense" type="number" name="defense" min="5" max="230">
 
-    <label for="speedAT">Speed Attack</label>
-    <input id="speedAT" type="number" name="speedAT" min="10" max="194">
+    <label for="speedAttack">Speed Attack</label>
+    <input id="speedAttack" type="number" name="speedAttack" min="10" max="194">
 
-    <label for="speedDF">Speed Defense</label>
-    <input id="speedDF" type="number" name="speedDF" min="20" max="230">
+    <label for="speedDefense">Speed Defense</label>
+    <input id="speedDefense" type="number" name="speedDefense" min="20" max="230">
 
     <label for="speed">Speed</label>
     <input id="speed" type="number" name="speed" min="5" max="180">
@@ -40,10 +49,8 @@
       <option value="false">False</option>
     </select>
 
-    <input type="submit" value="Pesquisar">
+    <input type="submit" value="alterar">
   </form>
 
-      <input type="submit" value="Alterar">
-    </form>
   </body>
 </html>
