@@ -78,13 +78,12 @@ public class PokemonController {
             for(String pokemonId: selectedPokemons){
                 if(!(selectedPokemons.length > 1)){
                     mvA.addObject("pokemonId",Integer.parseInt(pokemonId));
+                    return mvA;
                 }else {
-                    //Manda mensagem de so pode alterar um de cada vez
+                   mv.addObject("alterAviso","Por favor Alter apenas 1 de cada vez");
                 }
             }
-            return mvA;
         }
-
         return mv;
     }
 }
