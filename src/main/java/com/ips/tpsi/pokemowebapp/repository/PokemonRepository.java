@@ -32,7 +32,7 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
             "LEFT JOIN PokemonType pt2 ON p.idPokemon = pt2.pokemonId AND pt2.typeLVL = 2 " +
             "LEFT JOIN Type t2 ON pt2.typeId = t2.idType " +
             "WHERE " +
-            "(COALESCE(:pokemonName, '') = '' OR COALESCE(:pokemonName, '') LIKE CONCAT('%', COALESCE(p.pokemonName, ''), '%')) " +
+            "(COALESCE(:pokemonName, '') = '' OR Lower(p.pokemonName) LIKE CONCAT('%', LOWER(COALESCE(:pokemonName, '')), '%')) " +
             "AND (COALESCE(:generation, p.generation) IS NULL OR COALESCE(:generation, p.generation) = p.generation) " +
             "AND (COALESCE(:hp, p.hp) IS NULL OR COALESCE(:hp, p.hp) = p.hp) " +
             "AND (COALESCE(:attack, p.attack) IS NULL OR COALESCE(:attack, p.attack) = p.attack) " +
