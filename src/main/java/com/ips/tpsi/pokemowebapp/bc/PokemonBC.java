@@ -33,9 +33,13 @@ public class PokemonBC {
                                      Integer speedDF, Integer speed, String legendary){
         if(pokemonRepository.existsById(idPokemon)){
             pokemonRepository.updatePokemonWithFilters(pokemonName, generation, total, hp, attack, defense, speedAT, speedDF, speed, legendary, idPokemon);
-            if(!typePokemon1.isBlank() || !typePokemon2.isBlank()){
+            if(!typePokemon1.isBlank()){
                 pokemonRepository.updatePokemonType1(idPokemon,typePokemon1);
+            }else if(!typePokemon2.isBlank()){
                 pokemonRepository.updatePokemonType2(idPokemon,typePokemon2);
+            } else if (!typePokemon1.isBlank() && !typePokemon2.isBlank()) {
+                pokemonRepository.updatePokemonType1(idPokemon, typePokemon1);
+                pokemonRepository.updatePokemonType2(idPokemon, typePokemon2);
             }
             return true;
         }else {
