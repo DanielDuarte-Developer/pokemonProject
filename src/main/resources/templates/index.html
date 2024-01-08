@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, white, black, red);
+            background-size: 600% 600%;
+            animation: gradientMove 15s infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        nav {
+            display: flex;
+            padding: 10px;
+            border-radius: 10px;
+            font-family: "Arial Black";
+            font-size: 20px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #FFF; /* Mudei a cor para branco */
+            font-weight: bold;
+            transition: color 0.3s ease-in-out; /* Adicionei uma transição suave de cor */
+        }
+
+        nav a:hover {
+            color: #FFC107;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.8); /* Adicionei uma sombra sutil ao passar o mouse */
+        }
+
+    </style>
+    <title>Projeto Pokemon</title>
+</head>
+<body>
+<nav>
+    <a th:href="@{/sobre}">Sobre nós</a><hr>
+    <a th:href="@{/consultar}">Consultar</a>
+</nav>
+
+</body>
+</html>
