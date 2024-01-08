@@ -57,18 +57,18 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
     @Transactional
     @Modifying
     @Query("UPDATE Pokemon p SET " +
-            "p.pokemonName = COALESCE(NULLIF(:pokemonName, ''), p.pokemonName), " +
-            "p.generation = COALESCE(:generation, p.generation), " +
-            "p.total = COALESCE(:total, p.total), "+
-            "p.hp = COALESCE(:hp, p.hp), " +
-            "p.attack = COALESCE(:attack, p.attack), " +
-            "p.defense = COALESCE(:defense, p.defense), " +
-            "p.spAttack = COALESCE(:spAttack, p.spAttack), " +
-            "p.spDefense = COALESCE(:spDefense, p.spDefense), " +
-            "p.speed = COALESCE(:speed, p.speed), " +
-            "p.legendary = COALESCE(NULLIF(:legendary, ''), p.legendary) " +
+            "p.pokemonName = CASE WHEN :pokemonName IS NOT NULL AND :pokemonName <> '' THEN :pokemonName ELSE p.pokemonName END, " +
+            "p.generation = CASE WHEN :generation IS NOT NULL THEN :generation ELSE p.generation END, " +
+            "p.total = CASE WHEN :total IS NOT NULL THEN :total ELSE p.total END, "+
+            "p.hp = CASE WHEN :hp IS NOT NULL THEN :hp ELSE p.hp END, " +
+            "p.attack = CASE WHEN :attack IS NOT NULL THEN :attack ELSE p.attack END, " +
+            "p.defense = CASE WHEN :defense IS NOT NULL THEN :defense ELSE p.defense END, " +
+            "p.spAttack = CASE WHEN :spAttack IS NOT NULL THEN :spAttack ELSE p.spAttack END, " +
+            "p.spDefense = CASE WHEN :spDefense IS NOT NULL THEN :spDefense ELSE p.spDefense END, " +
+            "p.speed = CASE WHEN :speed IS NOT NULL THEN :speed ELSE p.speed END, " +
+            "p.legendary = CASE WHEN :legendary IS NOT NULL AND :legendary <> '' THEN :legendary ELSE p.legendary END " +
             "WHERE p.idPokemon = :idPokemon")
-    void updatePokemonWithFilters( @Param("idPokemon") Integer idPokemon,
+    void updatePokemonWithFilters(
                         @Param("pokemonName") String pokemonName,
                         @Param("generation") Integer generation,
                         @Param("total") Integer total,
@@ -78,7 +78,8 @@ public interface PokemonRepository extends JpaRepository<Pokemon,Integer> {
                         @Param("spAttack") Integer spAttack,
                         @Param("spDefense") Integer spDefense,
                         @Param("speed") Integer speed,
-                        @Param("legendary") String legendary
+                        @Param("legendary") String legendary,
+                        @Param("idPokemon") Integer idPokemon
     );
 
     @Modifying

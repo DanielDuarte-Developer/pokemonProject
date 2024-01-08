@@ -28,10 +28,18 @@ public class PokemonController {
         return mv;
     }
     @PostMapping("/consultarLogic")
-    public ModelAndView consultar(String action, String pokemonName, String typePokemon, Integer generation, Integer hp, Integer attack, Integer defense, Integer speedAT,
-    Integer speedDF, Integer speed, String legendary){
+    public ModelAndView consultar(@RequestParam(name = "pokemonName", required = false) String pokemonName,
+                                  @RequestParam(name = "typePokemon", required = false) String typePokemon,
+                                  @RequestParam(name = "generation", required = false) Integer generation,
+                                  @RequestParam(name = "hp", required = false) Integer hp,
+                                  @RequestParam(name = "attack", required = false) Integer attack,
+                                  @RequestParam(name = "defense", required = false) Integer defense,
+                                  @RequestParam(name = "speedAT", required = false) Integer speedAT,
+                                  @RequestParam(name = "speedDF", required = false) Integer speedDF,
+                                  @RequestParam(name = "speed", required = false) Integer speed,
+                                  @RequestParam(name = "legendary", required = false) String legendary){
         ModelAndView mv = new ModelAndView("consultar");
-        List<Object> pokemonDetailed = pokemonBc.getPokemonByFilters(pokemonName,typePokemon,hp,attack,defense,speedAT,generation,speedDF,speed,legendary);
+        List<Object> pokemonDetailed = pokemonBc.getPokemonByFilters(pokemonName,typePokemon,generation,hp,attack,defense,speedAT,speedDF,speed,legendary);
         mv.addObject("pokemons",pokemonDetailed);
         return mv;
     }
@@ -44,12 +52,12 @@ public class PokemonController {
     }
 
     @PostMapping("/alterarLogic")
-    public ModelAndView alterar(@RequestParam("alterarPokemonId") String id, String pokemonName, String typePokemon1, String typePokemon2, Integer generation, Integer total,Integer hp, Integer attack, Integer defense, Integer speedAttack,
+    public ModelAndView alterar(@RequestParam("alterarPokemonId") Integer id, String pokemonName, String typePokemon1, String typePokemon2, Integer generation, Integer total,Integer hp, Integer attack, Integer defense, Integer speedAttack,
                                 Integer speedDefense, Integer speed, String legendary){
         ModelAndView mv = new ModelAndView("alterar");
         System.out.println("PokemonId: "+ id + " Nome: "+ pokemonName+ "typePokemon1" + typePokemon1 +"typePokemon2" + typePokemon2 +"generation" + generation
                 +"hp" + hp +"attack" + attack +"defense" + defense +"speedAttack" + speedAttack +"speedDefense" + speedDefense +"speed" +speed  +"Legendary" + legendary);
-        boolean isUpdated = pokemonBc.updatePokemonById(Integer.parseInt(id),pokemonName,typePokemon1,typePokemon2,generation,total,hp,attack,defense,speedAttack,speedDefense,speed,legendary);
+        boolean isUpdated = pokemonBc.updatePokemonById(id,pokemonName,typePokemon1,typePokemon2,generation,total,hp,attack,defense,speedAttack,speedDefense,speed,legendary);
         if(isUpdated){
             mv.addObject("updateConfirm", "Pokemon alterado com sucesso");
         }
@@ -79,7 +87,7 @@ public class PokemonController {
         } else if ("Alterar".equals(action)) {
             ModelAndView mvA = new ModelAndView("alterar");
             for(String pokemonId: selectedPokemons){
-                mvA.addObject("pokemonId",pokemonId);
+                mvA.addObject("pokemonId",Integer.parseInt(pokemonId));
                 System.out.println("PokemonId: "+ pokemonId);
             }
             return mvA;
