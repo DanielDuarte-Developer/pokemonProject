@@ -22,11 +22,6 @@ public class PokemonController {
 
 
     //###################### Consultar ###########################
-    @GetMapping("/consultar")
-    public ModelAndView getConsultar(){
-        ModelAndView mv = new ModelAndView("consultar");
-        return mv;
-    }
     @PostMapping("/consultarLogic")
     public ModelAndView consultar(@RequestParam(name = "pokemonName", required = false) String pokemonName,
                                   @RequestParam(name = "typePokemon", required = false) String typePokemon,
@@ -45,21 +40,15 @@ public class PokemonController {
     }
 
     //########################### Alterar ###########################
-    @GetMapping("/alterar")
-    public ModelAndView getAlterar(){
-        ModelAndView mv = new ModelAndView(" alterar");
-        return mv;
-    }
-
     @PostMapping("/alterarLogic")
     public ModelAndView alterar(@RequestParam("alterarPokemonId") Integer id, String pokemonName, String typePokemon1, String typePokemon2, Integer generation, Integer total,Integer hp, Integer attack, Integer defense, Integer speedAttack,
                                 Integer speedDefense, Integer speed, String legendary){
         ModelAndView mv = new ModelAndView("alterar");
-        System.out.println("PokemonId: "+ id + " Nome: "+ pokemonName+ "typePokemon1" + typePokemon1 +"typePokemon2" + typePokemon2 +"generation" + generation
-                +"hp" + hp +"attack" + attack +"defense" + defense +"speedAttack" + speedAttack +"speedDefense" + speedDefense +"speed" +speed  +"Legendary" + legendary);
+        ModelAndView mvC = new ModelAndView("consultar");
         boolean isUpdated = pokemonBc.updatePokemonById(id,pokemonName,typePokemon1,typePokemon2,generation,total,hp,attack,defense,speedAttack,speedDefense,speed,legendary);
         if(isUpdated){
             mv.addObject("updateConfirm", "Pokemon alterado com sucesso");
+            return mvC;
         }
 
         return mv;
@@ -87,8 +76,11 @@ public class PokemonController {
         } else if ("Alterar".equals(action)) {
             ModelAndView mvA = new ModelAndView("alterar");
             for(String pokemonId: selectedPokemons){
-                mvA.addObject("pokemonId",Integer.parseInt(pokemonId));
-                System.out.println("PokemonId: "+ pokemonId);
+                if(!(selectedPokemons.length > 1)){
+                    mvA.addObject("pokemonId",Integer.parseInt(pokemonId));
+                }else {
+                    //Manda mensagem de so pode alterar um de cada vez
+                }
             }
             return mvA;
         }

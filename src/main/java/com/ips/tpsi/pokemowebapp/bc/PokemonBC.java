@@ -32,8 +32,6 @@ public class PokemonBC {
                                      Integer total ,Integer hp, Integer attack, Integer defense, Integer speedAT,
                                      Integer speedDF, Integer speed, String legendary){
         if(pokemonRepository.existsById(idPokemon)){
-            System.out.println("PokemonId: "+ idPokemon + " Nome: "+ pokemonName+ " typePokemon1: " + typePokemon1 +" typePokemon2 " + typePokemon2 +" generation " + generation
-                    +" hp " + hp +" attack " + attack +" defense " + defense + " speedAttack " + speedAT + " speedDefense " + speedDF +" speed " +speed  +" Legendary " + legendary);
             pokemonRepository.updatePokemonWithFilters(pokemonName, generation, total, hp, attack, defense, speedAT, speedDF, speed, legendary, idPokemon);
             if(!typePokemon1.isBlank() || !typePokemon2.isBlank()){
                 pokemonRepository.updatePokemonType1(idPokemon,typePokemon1);

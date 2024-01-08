@@ -8,16 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class WebController {
     @GetMapping({"/","/home"})
     public ModelAndView getHome(){
-        ModelAndView mv = new ModelAndView("index");
-        // Aceder à business component > acede ao repositorio > obtem dados
+        ModelAndView mv = new ModelAndView("consultar");
         return mv;
     }
-    @GetMapping("/name")
-    public ModelAndView getName(){
-        ModelAndView mv = new ModelAndView("nome");
-        // Aceder à business component > acede ao repositorio > obtem dados
-        mv.addObject("name","Daniel");
-        return mv;
-    }
-
 }
