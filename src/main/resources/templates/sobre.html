@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre Nós</title>
+    <style>
+        body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+            height: 100vh;
+        margin: 0;
+        background: linear-gradient(45deg, white, black, red);
+        background-size: 600% 600%;
+        animation: gradientMove 15s infinite;
+        }
+
+        @keyframes gradientMove {
+        0% {
+        background-position: 0% 50%;
+        }
+        100% {
+        background-position: 100% 50%;
+        }
+        }
+
+        .navegacao {
+            display: flex;
+            justify-content: center;
+            margin-top: -675px;
+        }
+        .navegacao a {
+            margin: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-family: "Arial Black";
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navegacao a:hover {
+            color: #FFC107;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+        }
+
+        .p {
+            font-family: "Arial Black";
+            color: white;
+            text-align: justify-all;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navegacao">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/sobre}">Sobre nós</a>
+    </nav>
+
+    <p class="p">Somos estudantes do CTeSP "Tecnologias e Programação de Sistemas de Informação" da Escola Superior de Gestão e Tecnologia de Santarém, este projeto consiste em criar uma base de dados de Pokémons onde seja possivel consultar todos os Pokémons ou utilizar filtos para os consultar, até mesmo, podemos alterar qualquer tipo de dado e podemos apagar um Pokémon.</p>
+
+</body>
+</html>

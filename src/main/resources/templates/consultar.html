@@ -89,9 +89,32 @@
         display: flex;
         flex-direction: column;
        }
+
+      .navegacao {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+      .navegacao a {
+        margin: 10px;
+        text-decoration: none;
+        color: #555555;
+        font-family: "Arial Black";
+        transition: color 0.3s ease-in-out;
+      }
+
+      .navegacao a:hover {
+        color: #FFC107;
+        text-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+      }
     </style>
 </head>
   <body>
+    <nav class="navegacao">
+      <a th:href="@{/home}">Home</a>
+      <a th:href="@{/sobre}">Sobre nós</a>
+    </nav>
+
     <div class="content-wrapper">
       <form th:action="@{/consultarLogic}" method="post">
         <label for="pokemonName">Pokemon Name</label>
