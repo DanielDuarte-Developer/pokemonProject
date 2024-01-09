@@ -47,7 +47,7 @@ public class PokemonController {
         ModelAndView mvC = new ModelAndView("consultar");
         boolean isUpdated = pokemonBc.updatePokemonById(id,pokemonName,typePokemon1,typePokemon2,generation,total,hp,attack,defense,speedAttack,speedDefense,speed,legendary);
         if(isUpdated){
-            mv.addObject("updateConfirm", "Pokemon alterado com sucesso");
+            mvC.addObject("updateConfirm", "Pokemon alterado com sucesso");
             return mvC;
         }
 
