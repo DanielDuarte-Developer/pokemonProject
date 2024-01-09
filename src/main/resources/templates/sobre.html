@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Sobre Nós</title>
@@ -27,7 +27,7 @@
         .navegacao {
             display: flex;
             justify-content: center;
-            margin-top: -675px;
+
         }
         .navegacao a {
             margin: 10px;
@@ -47,15 +47,23 @@
             color: white;
             text-align: justify-all;
         }
+        .div-nav{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <nav class="navegacao">
-        <a th:href="@{/home}">Home</a>
-        <a th:href="@{/sobre}">Sobre nós</a>
-    </nav>
+    <div class="div-nav">
+        <nav class="navegacao">
+            <a th:href="@{/home}">Home</a>
+            <a th:href="@{/sobre}">Sobre nós</a>
+        </nav>
 
-    <p class="p">Somos estudantes do CTeSP "Tecnologias e Programação de Sistemas de Informação" da Escola Superior de Gestão e Tecnologia de Santarém, este projeto consiste em criar uma base de dados de Pokémons onde seja possivel consultar todos os Pokémons ou utilizar filtos para os consultar, até mesmo, podemos alterar qualquer tipo de dado e podemos apagar um Pokémon.</p>
-
+        <p class="p">Somos estudantes do CTeSP "Tecnologias e Programação de Sistemas de Informação da Escola Superior de Gestão e Tecnologia de Santarém</p>
+        <p class="p">Este projeto consiste na visualização dos Pokémons por filtros ou sem eles e ainda sendo possivel alterar qualquer tipo de dado(s) de um pokemon(s) e apagar o(s) mesmo(s) selecionado(s).</p>
+    </div>
 </body>
 </html>
